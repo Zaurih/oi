@@ -1,0 +1,781 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+:root {
+    --fundo: #f4f6fc;
+    --azul-escuro: #020524;
+    --azul: #4357e8;
+    --azul-hover: #3446cb;
+    --roxo: #7564f5;
+    --texto: #202747;
+    --texto-suave: #727b95;
+    --branco: #ffffff;
+    --borda: #e3e7f1;
+    --verde: #16a36a;
+    --vermelho: #e05260;
+    --sombra: 0 8px 30px rgba(21, 35, 85, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgba(67, 87, 232, 0.35);
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.topo {
+    min-height: 90px;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--azul-escuro);
+    color: var(--branco);
+}
+
+.logo {
+    color: var(--branco);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #8290ff;
+}
+
+.topo p {
+    color: #c4c9e6;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+.container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 35px 0 50px;
+}
+
+.boas-vindas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 38px;
+    margin-bottom: 28px;
+    border-radius: 22px;
+    background: linear-gradient(125deg, #ffffff, #edf0ff);
+    border: 1px solid #e6e9fb;
+}
+
+.etiqueta {
+    margin-bottom: 10px;
+    color: var(--azul);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.boas-vindas h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+}
+
+.boas-vindas h1 span {
+    color: var(--azul);
+}
+
+.subtitulo {
+    margin-top: 15px;
+    color: var(--texto-suave);
+}
+
+.icone-livro {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 110px;
+    height: 110px;
+    border-radius: 28px;
+    background: #e0e5ff;
+    font-size: 3.2rem;
+}
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
+
+.estatisticas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.card-stat {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+.card-stat span {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.card-stat strong {
+    color: var(--azul-escuro);
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+/* =========================
+   PAINÉIS
+========================= */
+
+.painel {
+    margin-bottom: 28px;
+    padding: 30px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.titulo-secao .etiqueta {
+    margin-bottom: 4px;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+/* =========================
+   FORMULÁRIOS
+========================= */
+
+#formTarefa {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    margin-top: 5px;
+    color: var(--texto);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #dce1ed;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--texto);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0a7ba;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(67, 87, 232, 0.1);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.campos > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.botao-principal,
+.botao-secundario,
+.btn-concluir,
+.btn-excluir,
+.btn-editar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 17px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.botao-principal {
+    background: var(--azul);
+    color: var(--branco);
+}
+
+.botao-principal:hover {
+    background: var(--azul-hover);
+    transform: translateY(-1px);
+}
+
+.botao-secundario {
+    border: 1px solid var(--borda);
+    background: #f5f6fb;
+    color: var(--texto);
+}
+
+.botao-secundario:hover {
+    background: #e9ecf6;
+}
+
+#formTarefa .botao-principal {
+    align-self: flex-start;
+    margin-top: 12px;
+}
+
+/* Botão de concluir tarefas */
+
+.btn-concluir {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.btn-concluir:hover {
+    background: #bbf7d0;
+}
+
+.btn-concluir.concluida {
+    background: #e8ebf2;
+    color: #586078;
+}
+
+/* Botão de excluir */
+
+.btn-excluir {
+    background: #fee2e2;
+    color: #b42332;
+}
+
+.btn-excluir:hover {
+    background: #fecaca;
+}
+
+/* Botão de editar */
+
+.btn-editar {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.btn-editar:hover {
+    background: #c7d2fe;
+}
+
+/* =========================
+   LISTA DE TAREFAS
+========================= */
+
+#listaTarefas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.tarefa {
+    padding: 20px;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tarefa:hover {
+    border-color: #cbd2fa;
+    box-shadow: 0 5px 18px rgba(21, 35, 85, 0.05);
+}
+
+.tarefa-concluida {
+    opacity: 0.75;
+    background: #f8fafc;
+}
+
+.tarefa-concluida .texto-tarefa {
+    text-decoration: line-through;
+    color: var(--texto-suave);
+}
+
+.texto-tarefa {
+    overflow-wrap: anywhere;
+}
+
+.acoes-tarefa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tarefa small,
+.tarefa .detalhes-tarefa {
+    color: var(--texto-suave);
+}
+
+#alertas:empty {
+    display: none;
+}
+
+#alertas {
+    margin-bottom: 14px;
+}
+
+/* =========================
+   FILTRO DE TAREFAS
+========================= */
+
+#filtro {
+    width: auto;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+/* =========================
+   CALENDÁRIO
+========================= */
+
+.painel-calendario {
+    width: 100%;
+}
+
+.titulo-calendario {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.titulo-calendario h2 {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.titulo-calendario button {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #f5f6ff;
+    color: var(--azul);
+    font-size: 1.7rem;
+    line-height: 1;
+}
+
+.titulo-calendario button:hover {
+    background: #e6eaff;
+}
+
+.dias-semana,
+.grade-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.dias-semana {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.dias-semana span {
+    color: var(--texto-suave);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.dia-calendario {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    min-height: 44px;
+    padding: 5px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.dia-calendario:hover {
+    border-color: var(--azul);
+    background: #eef0ff;
+}
+
+.dia-calendario.hoje {
+    border: 2px solid var(--azul);
+    color: var(--azul);
+    font-weight: 800;
+}
+
+.dia-calendario.selecionado {
+    border-color: var(--azul);
+    background: var(--azul);
+    color: #fff;
+}
+
+.dia-calendario.vazio {
+    border-color: transparent;
+    background: transparent;
+    cursor: default;
+}
+
+.tarefas-do-dia {
+    margin-top: 22px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #f6f7fc;
+}
+
+.tarefas-do-dia p {
+    color: var(--texto-suave);
+    font-size: 0.92rem;
+}
+
+.tarefas-do-dia ul {
+    padding-left: 20px;
+}
+
+.tarefas-do-dia li {
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   TEMPORIZADOR POMODORO
+========================= */
+
+.pomodoro {
+    text-align: center;
+}
+
+.pomodoro .etiqueta {
+    margin-bottom: 6px;
+}
+
+.descricao-foco {
+    margin-top: 8px;
+    color: var(--texto-suave);
+}
+
+.modos-foco {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 24px 0;
+}
+
+.modo {
+    padding: 10px 18px;
+    border: 1px solid var(--borda);
+    border-radius: 30px;
+    background: #f5f6fb;
+    color: var(--texto);
+    font-weight: 700;
+}
+
+.modo.ativo {
+    border-color: var(--azul);
+    background: #e7eaff;
+    color: var(--azul);
+}
+
+.relogio-foco {
+    margin: 15px 0;
+    color: var(--azul-escuro);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(3rem, 9vw, 5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.estado-foco {
+    margin-bottom: 18px;
+    color: var(--texto-suave);
+}
+
+.barra-tempo {
+    width: 100%;
+    height: 9px;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e9ecf7;
+}
+
+.progresso-foco {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--azul), var(--roxo));
+    transition: width 0.3s;
+}
+
+.acoes-foco {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.dica-foco {
+    margin-top: 22px;
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px 7%;
+    background: var(--azul-escuro);
+    color: #c4c9e6;
+    font-size: 0.9rem;
+}
+
+footer strong {
+    color: #fff;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 700px) {
+    .topo {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px 5%;
+    }
+
+    .container {
+        width: 92%;
+        padding-top: 22px;
+    }
+
+    .boas-vindas {
+        padding: 25px;
+    }
+
+    .icone-livro {
+        width: 75px;
+        height: 75px;
+        border-radius: 20px;
+        font-size: 2.2rem;
+    }
+
+    .estatisticas {
+        gap: 10px;
+    }
+
+    .card-stat {
+        padding: 15px 12px;
+    }
+
+    .card-stat span {
+        font-size: 0.78rem;
+    }
+
+    .card-stat strong {
+        font-size: 1.6rem;
+    }
+
+    .painel {
+        padding: 22px 18px;
+    }
+
+    .campos {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .dias-semana,
+    .grade-calendario {
+        gap: 4px;
+    }
+
+    .dia-calendario {
+        min-height: 37px;
+        padding: 3px;
+        border-radius: 7px;
+        font-size: 0.88rem;
+    }
+
+    .dias-semana span {
+        font-size: 0.73rem;
+    }
+
+    .titulo-secao {
+        align-items: flex-start;
+    }
+
+    #filtro {
+        width: 120px;
+        font-size: 0.85rem;
+    }
+
+    footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 24px 5%;
+    }
+}
+
+@media (max-width: 420px) {
+    .boas-vindas {
+        padding: 20px;
+    }
+
+    .icone-livro {
+        display: none;
+    }
+
+    .estatisticas {
+        grid-template-columns: 1fr;
+    }
+
+    .card-stat {
+        padding: 15px 18px;
+    }
+
+    .card-stat strong {
+        font-size: 1.8rem;
+    }
+
+    .titulo-calendario {
+        gap: 8px;
+    }
+
+    .titulo-calendario button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .titulo-calendario h2 {
+        font-size: 1.1rem;
+    }
+
+    .acoes-foco {
+        flex-direction: column;
+    }
+
+    .acoes-foco button {
+        width: 100%;
+    }
+}
+.botao-adicionar-nota{
+    border: none;
+    border-radius: 10px;
+    background: #4357e8;
+    color: white;
+    padding: 10px;
+}

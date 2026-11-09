@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020524">
+
+    <title>Organizaê | Organização Estudantil</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topo">
+        <a class="logo" href="#">Organiza<span>ê</span>.</a>
+        <p>Seu espaço para organizar os estudos.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- BOAS-VINDAS -->
+        <section class="boas-vindas">
+            <div>
+                <p class="etiqueta">SEU CANTINHO DE ESTUDOS</p>
+                <h1>Menos atraso,<br><span>mais pontuação.</span></h1>
+                <p class="subtitulo">
+                    Organize suas atividades e acompanhe seus prazos.
+                </p>
+            </div>
+
+            <div class="icone-livro" aria-hidden="true">📚</div>
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+        <section class="estatisticas">
+            <article class="card-stat">
+                <span>Total de tarefas</span>
+                <strong id="total">0</strong>
+            </article>
+
+            <article class="card-stat">
+                <span>Pendentes</span>
+                <strong id="pendentes">0</strong>
+            </article>
+
+            <article class="card-stat">
+                <span>Concluídas</span>
+                <strong id="concluidas">0</strong>
+            </article>
+        </section>
+
+        <!-- TEMPORIZADOR POMODORO -->
+        <section class="painel pomodoro">
+            <div class="etiqueta">SEU MOMENTO DE CONCENTRAÇÃO</div>
+
+            <h2>Modo de foco</h2>
+
+            <p class="descricao-foco">
+                Concentre-se em uma tarefa de cada vez. Você consegue!
+            </p>
+
+            <div class="modos-foco">
+                <button type="button" id="modoFoco" class="modo ativo">
+                    Foco · 25 min
+                </button>
+
+                <button type="button" id="modoPausa" class="modo">
+                    Pausa · 5 min
+                </button>
+            </div>
+
+            <div id="relogioFoco" class="relogio-foco"
+                 role="timer" aria-live="off">25:00</div>
+
+            <p id="estadoFoco" class="estado-foco" aria-live="polite">
+                Pronta para começar?
+            </p>
+
+            <div class="barra-tempo">
+                <div id="progressoFoco" class="progresso-foco"></div>
+            </div>
+
+            <div class="acoes-foco">
+                <button type="button" id="iniciarFoco"
+                        class="botao-principal">
+                    ▶ Iniciar
+                </button>
+
+                <button type="button" id="reiniciarFoco"
+                        class="botao-secundario">
+                    ↻ Reiniciar
+                </button>
+            </div>
+
+            <p class="dica-foco">
+                Dica: deixe o celular de lado e escolha uma tarefa para concluir.
+            </p>
+        </section>
+
+        <!-- FORMULÁRIO DE TAREFAS -->
+        <section class="painel">
+            <div class="titulo-secao">
+                <div>
+                    <p class="etiqueta">PLANEJAMENTO</p>
+                    <h2>Adicionar tarefa</h2>
+                </div>
+            </div>
+
+            <form id="formTarefa">
+                <label for="titulo">Nome da atividade</label>
+                <input
+                    id="titulo"
+                    name="titulo"
+                    type="text"
+                    placeholder="Ex.: Trabalho de matemática"
+                    required
+                >
+
+                <div class="campos">
+                    <div>
+                        <label for="materia">Matéria</label>
+                        <input
+                            id="materia"
+                            name="materia"
+                            type="text"
+                            placeholder="Ex.: Matemática"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="tipo">Tipo de atividade</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="Trabalho">Trabalho</option>
+                            <option value="Prova">Prova</option>
+                            <option value="Exercício">Exercício</option>
+                            <option value="Pesquisa">Pesquisa</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="prazo">Data de entrega</label>
+                <input
+                    id="prazo"
+                    name="prazo"
+                    type="date"
+                    required
+                >
+
+                <label for="observacoes">Observações (opcional)</label>
+                <textarea
+                    id="observacoes"
+                    name="observacoes"
+                    rows="3"
+                    placeholder="Anote detalhes importantes..."
+                ></textarea>
+
+                <button class="botao-principal" type="submit">
+                    + Adicionar tarefa
+                </button>
+            </form>
+        </section>
+
+        <!-- LISTA DE TAREFAS -->
+        <section class="painel">
+            <div class="titulo-secao">
+                <div>
+                    <p class="etiqueta">SEU DIA A DIA</p>
+                    <h2>Minhas tarefas</h2>
+                </div>
+
+                <select id="filtro" aria-label="Filtrar tarefas">
+                    <option value="todas">Todas</option>
+                    <option value="pendentes">Pendentes</option>
+                    <option value="concluidas">Concluídas</option>
+                </select>
+            </div>
+
+            <div id="alertas" aria-live="polite"></div>
+            <div id="listaTarefas"></div>
+        </section>
+
+        <!-- CALENDÁRIO -->
+        <section class="painel">
+            <div class="titulo-secao">
+                <div>
+                    <p class="etiqueta">PLANEJAMENTO</p>
+                    <h2>Calendário de atividades</h2>
+                </div>
+            </div>
+
+            <div class="painel-calendario">
+                <div class="titulo-calendario">
+                    <button
+                        id="mesAnterior"
+                        type="button"
+                        aria-label="Mês anterior"
+                    >‹</button>
+
+                    <h2 id="mesAno">Calendário</h2>
+
+                    <button
+                        id="mesProximo"
+                        type="button"
+                        aria-label="Próximo mês"
+                    >›</button>
+                </div>
+
+                <div class="dias-semana">
+                    <span>Seg</span>
+                    <span>Ter</span>
+                    <span>Qua</span>
+                    <span>Qui</span>
+                    <span>Sex</span>
+                    <span>Sáb</span>
+                    <span>Dom</span>
+                </div>
+
+                <div
+                    id="gradeCalendario"
+                    class="grade-calendario"
+                ></div>
+
+                <div
+                    id="tarefasDoDia"
+                    class="tarefas-do-dia"
+                    aria-live="polite"
+                >
+                    <p>Selecione um dia para ver suas atividades.</p>
+                </div>
+            </div>
+        </section>
+
+        
+<!-- SEÇÃO DE NOTAS -->
+<section class="painel-notas" id="painelNotas">
+    <div class="cabecalho-notas">
+        <div>
+            <span class="subtitulo-notas">ACOMPANHAMENTO ESCOLAR</span>
+            <h2>Minhas notas</h2>
+            <p>
+                Acompanhe seu desempenho e descubra quanto falta
+                para alcançar a média anual.
+            </p>
+        </div>
+    </div>
+
+    <!-- RESUMO DAS MÉDIAS -->
+    <div class="resumo-medias">
+        <div class="info-media">
+            <span>Média trimestral</span>
+            <strong>6,0</strong>
+            <small>Nota de referência por trimestre</small>
+        </div>
+
+        <div class="info-media">
+            <span>Meta anual</span>
+            <strong>18,0</strong>
+            <small>Soma dos três trimestres</small>
+        </div>
+
+        <div class="info-media">
+            <span>Trimestres</span>
+            <strong>3</strong>
+            <small>Períodos de avaliação</small>
+        </div>
+    </div>
+
+    <!-- FORMULÁRIO PARA CADASTRAR NOTAS -->
+    <div class="formulario-notas">
+        <h3>Adicionar ou atualizar nota</h3>
+
+        <form id="formNota">
+            <div class="campo-nota">
+                <label for="nomeMateriaNota">Matéria</label>
+                <input
+                    type="text"
+                    id="nomeMateriaNota"
+                    placeholder="Ex.: Matemática"
+                    required
+                >
+            </div>
+
+            <div class="campo-nota">
+                <label for="bimestreNota">Trimestre</label>
+                <select id="bimestreNota" required>
+                    <option value="1">1º trimestre</option>
+                    <option value="2">2º trimestre</option>
+                    <option value="3">3º trimestre</option>
+                </select>
+            </div>
+
+            <div class="campo-nota">
+                <label for="valorNota">Nota (0 a 10)</label>
+                <input
+                    type="number"
+                    id="valorNota"
+                    placeholder="Ex.: 8,5"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="botao-adicionar-nota">
+                Adicionar nota
+            </button>
+        </form>
+
+        <p id="mensagemNota" role="status" aria-live="polite"></p>
+    </div>
+
+    <!-- LISTA DE MATÉRIAS E RESULTADOS -->
+    <div class="lista-notas-container">
+        <h3>Boletim escolar</h3>
+
+        <p class="descricao-boletim">
+            Cadastre cada matéria e suas notas. Ao lançar uma nota
+            para um trimestre já cadastrado, o valor anterior será atualizado.
+        </p>
+
+        <div id="listaNotas" class="lista-notas">
+            <p>Nenhuma matéria cadastrada ainda.</p>
+        </div>
+    </div>
+</section>
+<!-- FIM DA SEÇÃO DE NOTAS -->
+
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        Feito para estudantes se organizarem, com tecnologia.
+        <strong>Organizaê © <span id="ano"></span></strong>
+    </footer>
+    <!-- JAVASCRIPT DO PROJETO -->
+    <!-- Mantenha aqui o arquivo JS que contém suas funções de tarefas,
+         calendário e temporizador, usando o nome real do seu arquivo. -->
+
+         <script src="script.js"></script>
+</body>
+</html>
